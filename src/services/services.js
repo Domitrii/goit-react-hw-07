@@ -13,6 +13,6 @@ export const postContacts = async(newContact) => {
 }
 
 export const deleteContacts = async(contactId) => {
-    const {data} = await axios.delete(`${BASE_URL}/${contactId}`)
+    const {data} = await axios.delete(`${BASE_URL}/contacts/${contactId}`)
     return data.id
 }

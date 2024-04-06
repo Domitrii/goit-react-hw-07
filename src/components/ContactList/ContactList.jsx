@@ -3,12 +3,6 @@ import Contact from "../Contact/Contact"
 import css from './ContactList.module.css'
 import { selectFilteredContacts, selectError, selectLoading } from "../../redux/contactsSlice"
 
-const getVisibleContacts = (contacts, filters) => {
-  return contacts.filter((contact) =>
-  contact.name.toLowerCase().includes(filters.toLowerCase())
-  );
-};
-
 function ContactList() {
   const getVisibleContacts = useSelector(selectFilteredContacts);
   const isLoading = useSelector(selectLoading);
@@ -16,7 +10,7 @@ function ContactList() {
 
   return (
     <ul className={css.listUl}>
-      {contactsVisible.map((contact) => {
+      {getVisibleContacts.map((contact) => {
         return (
           <Contact
             key={contact.id}
